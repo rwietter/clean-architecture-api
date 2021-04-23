@@ -6,7 +6,7 @@ class SignUpController {
   handle(httpRequest: HttpRequest): HttpResponse {
     const { body } = httpRequest;
 
-    const requiredFiles = ['name', 'email'];
+    const requiredFiles = ['name', 'email', 'passoword'];
     
     for (const field of requiredFiles) {
       if (!body[field])
