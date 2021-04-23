@@ -1,16 +1,4 @@
-// type HandleHttpRequest = {
-//   statusCode: number,
-//   body?: Error
-// }
-
-// type HttpRequest = {
-//   body: {
-//     email?: string
-//     name?: string
-//     passoword?: string,
-//     passowordConfirmation?: string
-//   }
-// }
+import { MissingParamError } from '../error-handling/missing-params'
 
 import { HttpRequest, HttpResponse } from '../protocols/http'
 
@@ -19,14 +7,14 @@ class SignUpController {
     if (!httpRequest.body.name) {
       return {
         statusCode: 400,
-        body: new Error('missing params: name')
+        body: new MissingParamError('name')
       }
     }
 
     if (!httpRequest.body.email) {
       return {
         statusCode: 400,
-        body: new Error('missing params: email')
+        body: new MissingParamError('email')
       }
     }
   }
