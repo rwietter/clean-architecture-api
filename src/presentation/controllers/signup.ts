@@ -1,8 +1,9 @@
 import { MissingParamError } from '../error-handling/missing-params'
 import { badRequest } from '../helpers/http'
+import { Controller } from '../protocols/controller';
 import { HttpRequest, HttpResponse } from '../protocols/http'
 
-class SignUpController {
+class SignUpController implements Controller {
   handle(httpRequest: HttpRequest): HttpResponse {
     const { body } = httpRequest;
 
