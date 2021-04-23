@@ -1,5 +1,6 @@
 import { SignUpController } from './signup'
 import { MissingParamError } from '../error-handling/missing-params'
+import { badRequest } from '../helpers/http'
 describe('SignUp Controllers', () => {
   test('Should return 400 if name is not provided', () => {
     const sut = new SignUpController();
