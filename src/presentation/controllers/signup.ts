@@ -1,19 +1,21 @@
-type HandleHttpRequest = {
-  statusCode: number,
-  body?: Error
-}
+// type HandleHttpRequest = {
+//   statusCode: number,
+//   body?: Error
+// }
 
-type HttpRequest = {
-  body: {
-    email?: string
-    name?: string
-    passoword?: string,
-    passowordConfirmation?: string
-  }
-}
+// type HttpRequest = {
+//   body: {
+//     email?: string
+//     name?: string
+//     passoword?: string,
+//     passowordConfirmation?: string
+//   }
+// }
+
+import { HttpRequest, HttpResponse } from '../protocols/http'
 
 class SignUpController {
-  handle(httpRequest: HttpRequest): HandleHttpRequest {
+  handle(httpRequest: HttpRequest): HttpResponse {
     if (!httpRequest.body.name) {
       return {
         statusCode: 400,
