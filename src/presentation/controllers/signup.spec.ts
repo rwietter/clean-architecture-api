@@ -23,8 +23,8 @@ describe('SignUp Controllers', () => {
     const httpRequest = {
       body: {
         name: 'mauricio',
-        passoword: '12345678',
-        passowordConfirmation: '12345678'
+        password: '12345678',
+        passwordConfirmation: '12345678'
       }
     }
 
@@ -34,19 +34,35 @@ describe('SignUp Controllers', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('email'));
   }),
     
-  test('Should return 400 if passoword is not provided', () => {
+  test('Should return 400 if password is not provided', () => {
     const sut = new SignUpController();
     const httpRequest = {
       body: {
         name: 'mauricio',
         email: 'rwietter@zohomail.com',
-        passowordConfirmation: '12345678'
+        passwordConfirmation: '12345678'
       }
     }
 
     const httpResponse = sut.handle(httpRequest);
 
     expect(httpResponse.statusCode).toBe(400);
-    expect(httpResponse.body).toEqual(new MissingParamError('passoword'));
+    expect(httpResponse.body).toEqual(new MissingParamError('password'));
+  }),
+    
+  test('Should return 400 if passwordConfirmation is not provided', () => {
+    const sut = new SignUpController();
+    const httpRequest = {
+      body: {
+        name: 'mauricio',
+        email: 'rwietter@zohomail.com',
+        password: '12345678',
+      }
+    }
+
+    const httpResponse = sut.handle(httpRequest);
+
+    expect(httpResponse.statusCode).toBe(400);
+    expect(httpResponse.body).toEqual(new MissingParamError('passwordConfirmation'));
   })
 })
