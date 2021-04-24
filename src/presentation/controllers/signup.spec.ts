@@ -1,9 +1,11 @@
 import { SignUpController } from './signup'
 import { MissingParamError } from '../error-handling/missing-params'
-import { badRequest } from '../helpers/http'
+
+const makeSut = () => new SignUpController();
+
 describe('SignUp Controllers', () => {
   test('Should return 400 if name is not provided', () => {
-    const sut = new SignUpController();
+    const sut = makeSut();
     const httpRequest = {
       body: {
         email: 'rwietter@zohomail.com',
@@ -19,7 +21,7 @@ describe('SignUp Controllers', () => {
   }),
     
   test('Should return 400 if email is not provided', () => {
-    const sut = new SignUpController();
+    const sut = makeSut();
     const httpRequest = {
       body: {
         name: 'mauricio',
@@ -35,7 +37,7 @@ describe('SignUp Controllers', () => {
   }),
     
   test('Should return 400 if password is not provided', () => {
-    const sut = new SignUpController();
+    const sut = makeSut();
     const httpRequest = {
       body: {
         name: 'mauricio',
@@ -51,7 +53,7 @@ describe('SignUp Controllers', () => {
   }),
     
   test('Should return 400 if passwordConfirmation is not provided', () => {
-    const sut = new SignUpController();
+    const sut = makeSut();
     const httpRequest = {
       body: {
         name: 'mauricio',
